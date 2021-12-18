@@ -1,0 +1,21 @@
+{% extends "include/base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}Ticketing System{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class=" d-flex justify-content-center ">
+            <form class="form-group" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-primary" type="submit" value="Sign In">
+                <div>
+                    Click here to <a href="{% url 'register' %}">Register</a>
+                </div>
+                {% for message in messages %}
+                    <h6 style="color: red">{{ message }}</h6>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

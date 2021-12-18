@@ -1,0 +1,21 @@
+{% extends "include/base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}Register{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class=" d-flex justify-content-center ">
+            <form class="form-group" method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" class="btn btn-primary" value="Register">
+                <div>
+                    Already Register! <a href="{% url 'login' %}">Login</a>
+                </div>
+                {% for message in messages %}
+                    <h6 style="color: red">{{ message }}</h6>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+{% endblock %}
